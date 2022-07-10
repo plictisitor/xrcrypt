@@ -36,7 +36,6 @@ def xrcrypt(text, key = "iubire", numberify = False):
         characterid += 1
         newcode = code
 
-        newcode -= (9 * (keycode - 93)) % 52
         newcode += 69
         newcode += (keycode % 222)
         newcode -= (characterid % 99)
@@ -44,13 +43,12 @@ def xrcrypt(text, key = "iubire", numberify = False):
         newcode += (keycode * 2 - 1) % 99
         newcode += sum_key * 3 - 9
         newcode -= (text_length + sum_key)
-        newcode *= 5
-        newcode *= 2 + round(keycode % 8)
+        newcode += 5 * (keycode % 3)
+        newcode -= 7 + round(keycode % 8)
         newcode += (keycode * keycode - 4) % 99
         newcode -= (keycode ** 3 - 1) % 59
         newcode += helpr(keycode * 9 - code * 7 + characterid * 5511)
-        newcode += 5855 + (keycode % 118)
-
+        newcode += 1 + (keycode % 118)
 
         encrypted += chr(int(newcode))
 
@@ -73,12 +71,12 @@ def dexrcrypt(text, key = "iubire", numberify = False):
         newcode = code
         characterid += 1
 
-        newcode -= 5855 + (keycode % 118)
+        newcode -= 1 + (keycode % 118)
         newcode -= helpr(keycode * 9 - code * 7 + characterid * 5511)
         newcode += (keycode ** 3 - 1) % 59
         newcode -= (keycode * keycode - 4) % 99
-        newcode /= 2 + round(keycode % 8)
-        newcode /= 5
+        newcode += 7 + round(keycode % 8)
+        newcode -= 5 * (keycode % 3)
         newcode += (text_length + sum_key)
         newcode -= sum_key * 3 - 9
         newcode -= (keycode * 2 - 1) % 99
@@ -86,8 +84,6 @@ def dexrcrypt(text, key = "iubire", numberify = False):
         newcode += (characterid % 99)
         newcode -= (keycode % 222)
         newcode -= 69
-        newcode = round(newcode)
-        newcode += (9 * (keycode - 93)) % 52
 
         decrypted += chr(int(newcode))
 

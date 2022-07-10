@@ -76,12 +76,12 @@ function xrcrypt(text, key = "iubire", numberify = false) {
         newcode += (keycode * 2 - 1) % 99
         newcode += sum_key * 3 - 9
         newcode -= (text_length + sum_key)
-        newcode *= 5
-        newcode *= 2 + round(keycode % 8)
+        newcode += 5 * (keycode % 3)
+        newcode -= 7 + round(keycode % 8)
         newcode += (keycode * keycode - 4) % 99
         newcode -= (keycode ** 3 - 1) % 59
         newcode += helpr(keycode * 9 - code * 7 + characterid * 5511)
-        newcode += 5855 + (keycode % 118)
+        newcode += 1 + (keycode % 118)
 
 
 
@@ -109,13 +109,12 @@ function dexrcrypt(text, key = "iubire", numberify = false) {
         newcode = code
         characterid += 1
 
-
-        newcode -= 5855 + (keycode % 118)
+        newcode -= 1 + (keycode % 118)
         newcode -= helpr(keycode * 9 - code * 7 + characterid * 5511)
         newcode += (keycode ** 3 - 1) % 59
         newcode -= (keycode * keycode - 4) % 99
-        newcode /= 2 + round(keycode % 8)
-        newcode /= 5
+        newcode += 7 + round(keycode % 8)
+        newcode -= 5 * (keycode % 3)
         newcode += (text_length + sum_key)
         newcode -= sum_key * 3 - 9
         newcode -= (keycode * 2 - 1) % 99
@@ -123,8 +122,6 @@ function dexrcrypt(text, key = "iubire", numberify = false) {
         newcode += (characterid % 99)
         newcode -= (keycode % 222)
         newcode -= 69
-
-
 
         newcode = Math.round(newcode)
         decrypted += chr(newcode)
