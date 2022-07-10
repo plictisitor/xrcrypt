@@ -50,7 +50,7 @@ hashxr python:
 
 - `algorithms are really slow`. lmao bro i know thats a feature not a bug. if it was fast, hashes could be cracked really easy bhaahhhaha
 - ~~`some keys distort the text after decryption`. well this not my problem go find a key that works lol~~ fixed. now its actually stable
-- `python functions return different results than js functions`. well yeah idc this is not a bug because i didnt want them to be the same lol
+- ~~`python functions return different results than js functions`. well yeah idc this is not a bug because i didnt want them to be the same lol~~ fixed
 - `results do not look pseudorandom! hashxr("qqqqqqqqqqqq") is 'f800000000000000000000000000000000000000000000000000000000000000'` yea i know that is also a feature, not a bug. it will confuse hackers really bad if they get to your db data it will be funny
 
 ### how does the encryption algorithm work? what are those numbers
