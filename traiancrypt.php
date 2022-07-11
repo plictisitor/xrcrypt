@@ -97,5 +97,3 @@ function dexrcrypt($text, $key = "iubire") {
 
     return $decrypted;
 }
-
-?>
