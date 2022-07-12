@@ -18,10 +18,11 @@ function ordsum($text) {
 }
 
 function helpr($num, $countr = 1) {
+    $num += 1;
     if (sin($num * 1337) > 0 && $countr < 47) {
-        return abs(round($num * ($num * $num - 91 * helpr(15 * (4 + $num % 9) - 1, $countr + 1) - 1 - $num % 7) * 512)) % 16;
+        return helpr(9 * (3 + $num), $countr + 4) + abs(round($num - ($num - 19 * helpr(15 * (4 + $num % 9) - 1, $countr + 1) - 1 - $num % 7))) % 16;
     } else {
-        return abs(round($num * ($num * $num + 91 * (15 - (4 - $num % 9)) + $num % 7) * 512)) % 16;
+        return abs(round($num - ($num * $num + 19 * (15 - (4 - $num % 9)) + $num % 7) * 3)) % 55;
     }
 }
 
@@ -52,7 +53,7 @@ function xrcrypt($text, $key = "iubire") {
         $newcode -= 7 + round($keycode % 8);
         $newcode += ($keycode * $keycode - 4) % 99;
         $newcode -= ($keycode ** 3 - 1) % 59;
-        $newcode += helpr($keycode * 9 - $code * 7 + $characterid * 5511);
+        $newcode += helpr($keycode * 9 - $text_length * 7 + $characterid * 5511);
         $newcode += 1 + ($keycode % 118);
 
         $encrypted .= chr($newcode);
@@ -78,7 +79,7 @@ function dexrcrypt($text, $key = "iubire") {
         $characterid += 1;
 
         $newcode -= 1 + ($keycode % 118);
-        $newcode -= helpr($keycode * 9 - $code * 7 + $characterid * 5511);
+        $newcode -= helpr($keycode * 9 - $text_length * 7 + $characterid * 5511);
         $newcode += ($keycode ** 3 - 1) % 59;
         $newcode -= ($keycode * $keycode - 4) % 99;
         $newcode += 7 + round($keycode % 8);
@@ -97,3 +98,13 @@ function dexrcrypt($text, $key = "iubire") {
 
     return $decrypted;
 }
+
+
+// for ($i = 0; $i < 1000; $i++) {
+//     $helpr = helpr($i * 5000);
+//     echo "<pre>$i -> $helpr</pre>";
+// }
+
+// echo xrcrypt("Hello World!");
+// echo "<br>";
+// echo dexrcrypt(xrcrypt("Hello World!"));

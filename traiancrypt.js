@@ -45,13 +45,13 @@ function abs(number) {
 }
 
 function helpr(num, countr = 1) {
+    num += 1;
     if (Math.sin(num * 1337) > 0 && countr < 47) {
-        return abs(round(num * (num * num - 91 * helpr(15 * (4 + num % 9) - 1, countr + 1) - 1 - num % 7) * 512)) % 16
+        return (helpr(9 * (3 + num), countr + 4) + Math.abs(Math.round(num - (num - 19 * helpr(15 * (4 + num % 9) - 1, countr + 1) - 1 - num % 7)))) % 16;
     } else {
-        return abs(round(num * (num * num + 91 * (15 - (4 - num % 9)) + num % 7) * 512)) % 16
+        return Math.abs(Math.round(num - (num * num + 19 * (15 - (4 - num % 9)) + num % 7) * 3)) % 55;
     }
 }
-
 
 function xrcrypt(text, key = "iubire", numberify = false) {
     encrypted = ""
@@ -80,7 +80,7 @@ function xrcrypt(text, key = "iubire", numberify = false) {
         newcode -= 7 + round(keycode % 8)
         newcode += (keycode * keycode - 4) % 99
         newcode -= (keycode ** 3 - 1) % 59
-        newcode += helpr(keycode * 9 - code * 7 + characterid * 5511)
+        newcode += helpr(keycode * 9 - text_length * 7 + characterid * 5511)
         newcode += 1 + (keycode % 118)
 
 
@@ -110,7 +110,7 @@ function dexrcrypt(text, key = "iubire", numberify = false) {
         characterid += 1
 
         newcode -= 1 + (keycode % 118)
-        newcode -= helpr(keycode * 9 - code * 7 + characterid * 5511)
+        newcode -= helpr(keycode * 9 - text_length * 7 + characterid * 5511)
         newcode += (keycode ** 3 - 1) % 59
         newcode -= (keycode * keycode - 4) % 99
         newcode += 7 + round(keycode % 8)
@@ -129,3 +129,6 @@ function dexrcrypt(text, key = "iubire", numberify = false) {
 
     return decrypted;
 }
+
+// e = "HELLO WORLD"
+// console.log(dexrcrypt(xrcrypt(e)))

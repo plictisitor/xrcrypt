@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 // file is included here:
-eval(fs.readFileSync('traiancrypt.js').toString());
+eval(fs.readFileSync('../traiancrypt.js').toString());
 
 testme = "salutare"
 
@@ -33,5 +33,6 @@ console.log("test25: " + (dexrcrypt(xrcrypt(testme, "Y"), "Y") == testme).toStri
 console.log("test26: " + (dexrcrypt(xrcrypt(testme, "Z"), "Z") == testme).toString())
 
 // they will work 100%
+console.log(xrcrypt("Hello world!"))
 console.log(xrcrypt("Hello World!", "lets_all_love_lain"))
 console.log(dexrcrypt("䞢倝乐䒹濢む䢰䭢澵䫌搾发", "lets_all_love_lain"))
