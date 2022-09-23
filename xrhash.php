@@ -1,14 +1,14 @@
 <?php
 
-function hashxr($text, $length = 64, $chars = "1234567890abcdef") {
+function hashxr($text = "?", $length = 64, $chars = "1234567890abcdef") {
+    $text = strval($text);
     $sums = strlen($text);
     $result = "";
 
     for ($i = 0; $i < strlen($text); $i++) {
         $sums += ord($text[$i]) * ((round(sin(ord($text[$i]) * 73) * 1e8)) % 91);
+        $sums += $length * ((round((ord($text[$i]) * 12) * 54)) % 77);
     }
-
-    $sums += $length * ((round(cos(ord($text[$i]) * 12) * 54)) % 77);
 
     for ($i = 0; $i < $length; $i++) {
         $charfp = (ord($text[$i % strlen($text)]) * 13 - ord($text[(3 * $i - 7) % strlen($text)]) * 7) % 69;
