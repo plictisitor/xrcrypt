@@ -1,5 +1,7 @@
 # xrcrypt
 
+### LIVE EXAMPLE: [tra1an.com/xrcrypt/](https://tra1an.com/xrcrypt/)
+
 ### usage
 
 xrcryption javascript:
